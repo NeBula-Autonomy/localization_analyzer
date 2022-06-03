@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>localization_analyzer</name>
+  <version>0.0.0</version>
+  <description>Collection of scripts to analyze peformance against ground truth</description>
+
+  <maintainer email="bmorrell@jpl.nasa.gov">Benjamin Morrell</maintainer>
+  <maintainer email="andreinkfemust@gmail.com">Andrzej Reinke</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>

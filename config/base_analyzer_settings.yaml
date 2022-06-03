@@ -1,0 +1,36 @@
+#################### Analyzer Settings ####################
+
+
+b_compute_ape: True 
+
+# Overall settings
+# To delete folder (so you don't have prompts to query whether to delete or not)
+b_clear_results_dir: True
+
+# Align origin for analysis 
+b_align_origin: False
+
+robots: [husky1, husky4, spot1]
+# robots: [husky1, husky2, husky3, husky4]
+
+# APE Settings
+b_plot_combined_ape: True 
+b_show_ape_plots: False
+b_save_individual_ape_plots: True
+b_save_combined_ape_plots: True
+
+# APE over distances Settings
+b_compute_ape_over_distances: False
+checkpoints: [100,200]
+b_plot_ape_over_distances: False
+
+# Distance metrics
+b_compute_distance_based_metrics: True
+b_show_distance_plots: False
+
+# RPE Settings
+b_compute_rpe: False
+b_plot_rpe: False
+
+# Saving Settings
+b_save_results: True 

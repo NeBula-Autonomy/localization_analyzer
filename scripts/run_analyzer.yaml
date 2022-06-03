@@ -1,0 +1,22 @@
+session_name: run_localization_analyzer
+
+environment:
+  DATA_PATH: /home/andrzej/code_workspace/ros_workspace/locus_ws_old/output
+  GT_PATH: /media/andrzej/9ccb877e-62aa-45e3-9018-dcae3fc8ea76/subt/main_datasets/13_Husky1_Kentucky/gt/
+  ROBOT_NAME: husky1
+  ODOM: lo_frontend/odometry
+  RUN_NUMBER: "final_025_1"
+  
+options:
+  default-command: /bin/bash
+
+windows:
+- window_name: analyze 
+  focus: false  
+  layout: tiled  
+  shell_command_before:
+    - source /home/andrzej/code_workspace/SUBT/locus/devel/setup.bash
+    - mkdir $DATA_PATH/ground_truth
+    - cp $GT_PATH/odometry.bag $DATA_PATH/ground_truth/
+  panes:
+    - python $(rospack find gt_analysis)/scripts/analyzer.py $DATA_PATH $ROBOT_NAME /$ROBOT_NAME/$ODOM $RUN_NUMBER;
