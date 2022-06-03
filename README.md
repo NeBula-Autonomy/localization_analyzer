@@ -7,38 +7,65 @@ See wiki for details.
 
 ## config
 ```analyzer_settings.yaml```
+
 ```base_analyzer_settings.yaml```
 
 ## scripts
 ```analyzer.py```
+
 ```base_analyzer.py```
+
 ```pose_graph_loop_closure_analysis.py```
+
 ```run_analyzer.yaml``` 
 
 
 
 ## utilities folder
 ```aggregate_odometries.py``` - script to aggregate user requested odometries along with ground truth odometry. Output file: ```aggregated_odometries.bag```
-```compute_distances_travelled.py``` - 
-```get_dataset_duration.py``` - get dataset duration
-```get_distance_traveled_from_aggregated_odometries.py``` 
-```plot_odom_covariance.py```
-```plot_volume_size_from_map_info.py```
+
 ```pose_graph_to_odometry.py```
+
 ```segment_aggregated_odometries.py```
+
 ```utilities.py```
+
+```boxplot_from_npz.py```
+
+```compute_distances_travelled.py``` - 
+
+```get_dataset_duration.py``` - get dataset duration
+
+```get_distance_traveled_from_aggregated_odometries.py``` 
+
+
+```loop_closure_eval.py```
+
 ```volume_over_time.py```
 
-# Not sure yet
-```boxplot_from_npz.py```
+
 ```plot_factor_covariance.py```
-```loop_closure_eval.py```
+
 ```plot_lc_ftness_hist.py```
+
 ```plot_lc_log.py```
+
 ```plot_loop_candidates.py```
+
+```plot_odom_covariance.py```
+
+```plot_volume_size_from_map_info.py```
+
+
+
+
+
+# Do we need that?
+
+
 ```recover_fiducial_calibration_from_pose_graph.py```
 
-# Notes
+# Removed
 
 Things that I assumed we do not need:
 - utilities/adapt_initial_transforms.py
