@@ -1,23 +1,69 @@
-# localizer_gt_analysis
-A repository for scripts and tools to analyse performance of LO and LAMP. 
+# Localization Analyzer
 
-See wiki for details.
+A repository for scripts and tools to analyse performance of lidar odometry and SLAM system used for [LOCUS](https://github.com/NeBula-Autonomy/LOCUS) and [LAMP](https://github.com/NeBula-Autonomy/LAMP) evaluation. The package is a wrapper for awesome trajectory analzying tool [evo](https://github.com/MichaelGrupp/evo).
+
+
+# How to store data in order to run the scripts
+
+To run the scripts smoothly you should have the following folder structure for dataset that you are going to evaluate. Assuming the folder is called ```test_localization_analyzer_dataset```. In this folder you should have the following structure
+
+```
++-- ground_truth
+|   +-- odometry.bag
++-- specific_method_run_number
+|   +-- cpu.bag
+|   +-- delay.txt
+|   +-- mem.bag
+|   +-- odometry.bag
+|   +-- rate.txt
++-- specific_method2_run_number
+|   +-- cpu.bag
+|   +-- delay.txt
+|   +-- mem.bag
+|   +-- odometry.bag
+|   +-- rate.txt
++-- specific_method3_run_number
+|   +-- cpu.bag
+|   +-- delay.txt
+|   +-- mem.bag
+|   +-- odometry.bag
+|   +-- rate.txt
+```
+```specific_method```, ```specific_method2```, ```specific_method3``` corresponds to the names in ```specific_methods``` in ```config/analyzer_settings.yaml```
+
+```run_number``` corresponds to the test name that you specified for your tests (see ```run_analyzer.yaml``` for details)
+
+```ground_truth``` place where you store bag folder with the ground truth 
+
+# How to run?
+
+To run analyzer (see ```run_analyzer.yaml``` for easy use)
+
+```python $(rospack find localization_analyzer)/scripts/analyzer.py <data/path/to/your/folder> <robot_name> <robot_odometry_topic> <test_name>```
+
+```<data/path/to/your/folder>``` - path to a folder where your output data is (e.g. path to ```test_localization_analyzer_dataset```)
+
+```<robot_name>``` - robot namespace
+
+```<robot_odometry_topic>``` - topic of the odometry (needs to containt robot namespace)
+
+```<test_name>``` - name of the test
 
 # Content description
 
 ## config
-```analyzer_settings.yaml```
+```analyzer_settings.yaml``` - config file that specify what metrics should be evaluated for single robot odometry 
 
-```base_analyzer_settings.yaml```
+```base_analyzer_settings.yaml``` 
 
 ## scripts
-```analyzer.py```
+```analyzer.py``` - the entrypoint of single robot analyzer
 
-```base_analyzer.py```
+```base_analyzer.py``` - the entrypoint of multi robot analyzer
 
 ```pose_graph_loop_closure_analysis.py```
 
-```run_analyzer.yaml``` 
+```run_analyzer.yaml``` - [tmux](https://tmuxp.git-pull.com/) script for the single robot analyzer
 
 
 
@@ -28,21 +74,19 @@ See wiki for details.
 
 ```segment_aggregated_odometries.py```
 
-```utilities.py```
+```utilities.py``` - module with all the extra functionalities used for analysis
 
-```boxplot_from_npz.py```
+```boxplot_from_npz.py``` - drawing boxplt from npz
 
-```compute_distances_travelled.py``` - 
+```compute_distances_travelled.py``` - compute distance travelled
 
 ```get_dataset_duration.py``` - get dataset duration
 
-```get_distance_traveled_from_aggregated_odometries.py``` 
-
+```get_distance_traveled_from_aggregated_odometries.py```  
 
 ```loop_closure_eval.py```
 
 ```volume_over_time.py```
-
 
 ```plot_factor_covariance.py```
 
@@ -55,10 +99,6 @@ See wiki for details.
 ```plot_odom_covariance.py```
 
 ```plot_volume_size_from_map_info.py```
-
-
-
-
 
 # Do we need that?
 

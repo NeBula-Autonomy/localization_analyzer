@@ -9,7 +9,7 @@ import sys
 import rospkg
 import shutil
 
-sys.path.insert(1, rospkg.RosPack().get_path('gt_analysis') + "/utilities")
+sys.path.insert(1, rospkg.RosPack().get_path('localization_analyzer') + "/utilities")
 from utilities import *
 
 def aggregate_odom(data_dir, gt_dir, robot_name, run_number):
@@ -87,7 +87,7 @@ def main():
     run_number = sys.argv[3]
     params = {}
 
-    settings_filename = rospkg.RosPack().get_path('gt_analysis') + "/config/base_analyzer_settings.yaml"
+    settings_filename = rospkg.RosPack().get_path('localization_analyzer') + "/config/base_analyzer_settings.yaml"
 
     with open(settings_filename) as file:
         params = yaml.load(file, Loader=yaml.FullLoader)
@@ -258,7 +258,7 @@ def main():
         if b_compute_ape_over_distances: 
             segment_aggregated_odometries(methods, checkpoints)
             for checkpoint in checkpoints:
-                bash_command = "bash $(rospack find gt_analysis)/utilities/ape_from_aggregated_odometries_parser.bash " + \
+                bash_command = "bash $(rospack find localization_analyzer)/utilities/ape_from_aggregated_odometries_parser.bash " + \
                                "aggregated_odometries_" + str(checkpoint) + ".bag" + " " + \
                                "ape_results_" + str(checkpoint) + " " + all_methods_string 
                 os.system(bash_command)
@@ -299,10 +299,10 @@ def main():
                 os.system(bash_command)
 
 
-            # bash_command = "bash $(rospack find gt_analysis)/utilities/rpe_from_aggregated_odometries.bash " + all_methods_string 
+            # bash_command = "bash $(rospack find localization_analyzer)/utilities/rpe_from_aggregated_odometries.bash " + all_methods_string 
             # os.system(bash_command)
             # if b_plot_rpe:
-            #     bash_command = "bash $(rospack find gt_analysis)/utilities/plot_rpe_results.bash " + all_methods_string 
+            #     bash_command = "bash $(rospack find localization_analyzer)/utilities/plot_rpe_results.bash " + all_methods_string 
             #     os.system(bash_command)
 
         #-----------------------------------------------------------------------------------------------------------

@@ -31,7 +31,7 @@ def main():
     run_number = sys.argv[4]
     params = {}
 
-    settings_filename = rospkg.RosPack().get_path('gt_analysis') + "/config/analyzer_settings.yaml"
+    settings_filename = rospkg.RosPack().get_path('localization_analyzer') + "/config/analyzer_settings.yaml"
 
     params = {}
 

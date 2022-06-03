@@ -5,7 +5,7 @@ base_station_name: base1
 # False analyzes locus, lamp
 # True analyzes specific_methods
 specify_non_default_methods: True 
-specific_methods: ["benchmark13"]
+specific_methods: ["locus"]
 
 # Overall settings
 # To delete folder (so you don't have prompts to query whether to delete or not)

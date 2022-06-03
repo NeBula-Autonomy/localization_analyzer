@@ -15,8 +15,7 @@ windows:
   focus: false  
   layout: tiled  
   shell_command_before:
-    - source /home/andrzej/code_workspace/SUBT/locus/devel/setup.bash
     - mkdir $DATA_PATH/ground_truth
     - cp $GT_PATH/odometry.bag $DATA_PATH/ground_truth/
   panes:
-    - python $(rospack find gt_analysis)/scripts/analyzer.py $DATA_PATH $ROBOT_NAME /$ROBOT_NAME/$ODOM $RUN_NUMBER;
+    - python $(rospack find localization_analyzer)/scripts/analyzer.py $DATA_PATH $ROBOT_NAME /$ROBOT_NAME/$ODOM $RUN_NUMBER;

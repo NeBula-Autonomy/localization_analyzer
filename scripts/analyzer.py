@@ -21,7 +21,7 @@ import rospkg
 import shutil
 
 
-sys.path.insert(1, rospkg.RosPack().get_path('gt_analysis') + "/utilities")
+sys.path.insert(1, rospkg.RosPack().get_path('localization_analyzer') + "/utilities")
 from utilities import *
 
 def main():
@@ -38,7 +38,7 @@ def main():
     run_number = sys.argv[4]
     params = {}
 
-    settings_filename = rospkg.RosPack().get_path('gt_analysis') + "/config/analyzer_settings.yaml"
+    settings_filename = rospkg.RosPack().get_path('localization_analyzer') + "/config/analyzer_settings.yaml"
 
     print("\n#################")
     print("Starting Analyzer")
@@ -299,7 +299,7 @@ def main():
     for method in methods: 
         all_methods_string = all_methods_string + method + " "
 
-    bash_command = "python $(rospack find gt_analysis)/utilities/aggregate_odometries.py " + data_dir + " " + robot_name + " " + ground_truth_topic + " " + run_number
+    bash_command = "python $(rospack find localization_analyzer)/utilities/aggregate_odometries.py " + data_dir + " " + robot_name + " " + ground_truth_topic + " " + run_number
     os.system(bash_command)
 
     #-----------------------------------------------------------------------------------------------------------
@@ -379,7 +379,7 @@ def main():
     if b_compute_ape_over_distances: 
         segment_aggregated_odometries(methods, checkpoints)
         for checkpoint in checkpoints:
-            bash_command = "bash $(rospack find gt_analysis)/utilities/ape_from_aggregated_odometries_parser.bash " + \
+            bash_command = "bash $(rospack find localization_analyzer)/utilities/ape_from_aggregated_odometries_parser.bash " + \
                            "aggregated_odometries_" + str(checkpoint) + ".bag" + " " + \
                            "ape_results_" + str(checkpoint) + " " + all_methods_string 
             os.system(bash_command)
@@ -420,10 +420,10 @@ def main():
             os.system(bash_command)
 
 
-        # bash_command = "bash $(rospack find gt_analysis)/utilities/rpe_from_aggregated_odometries.bash " + all_methods_string 
+        # bash_command = "bash $(rospack find localization_analyzer)/utilities/rpe_from_aggregated_odometries.bash " + all_methods_string 
         # os.system(bash_command)
         # if b_plot_rpe:
-        #     bash_command = "bash $(rospack find gt_analysis)/utilities/plot_rpe_results.bash " + all_methods_string 
+        #     bash_command = "bash $(rospack find localization_analyzer)/utilities/plot_rpe_results.bash " + all_methods_string 
         #     os.system(bash_command)
 
     #-----------------------------------------------------------------------------------------------------------
