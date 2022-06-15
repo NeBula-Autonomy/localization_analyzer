@@ -1,11 +1,11 @@
 session_name: run_localization_analyzer
 
 environment:
-  DATA_PATH: /home/andrzej/code_workspace/ros_workspace/locus_ws_old/output
-  GT_PATH: /media/andrzej/9ccb877e-62aa-45e3-9018-dcae3fc8ea76/subt/main_datasets/13_Husky1_Kentucky/gt/
-  ROBOT_NAME: husky1
+  DATA_PATH: /home/andrzej/Datasets/test_localizer_gt/
+  GT_PATH: /home/andrzej/Datasets/test_localizer_gt/
+  ROBOT_NAME: husky4
   ODOM: lo_frontend/odometry
-  RUN_NUMBER: "final_025_1"
+  RUN_NUMBER: "test_out"
   
 options:
   default-command: /bin/bash

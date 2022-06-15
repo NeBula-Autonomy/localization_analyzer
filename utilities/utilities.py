@@ -21,7 +21,7 @@ from nav_msgs.msg import Odometry
 from matplotlib.lines import Line2D
 from matplotlib import pyplot as plt 
 from loop_closure_eval import LoopClosureEvaluator
-import key_handling
+#import key_handling
 from functools import reduce
 matplotlib.rcParams['mathtext.fontset'] = 'stix'
 matplotlib.rcParams['font.family'] = 'STIXGeneral'
