@@ -4,8 +4,24 @@ A repository for scripts and tools to analyze the performance of lidar odometry 
 Primarily used for [LOCUS](https://github.com/NeBula-Autonomy/LOCUS) and [LAMP](https://github.com/NeBula-Autonomy/LAMP) evaluation.
 The package is a wrapper for awesome trajectory analyzing tool [evo](https://github.com/MichaelGrupp/evo).
 
+# How to install
 
-# How to store data in order to run the scripts
+```
+sudo apt install python3-pip
+pip3 install numpy
+pip3 install pandas
+pip3 install seaborn
+pip3 install evo
+```
+After installation complete reboot because ```evo``` needs that, then in your ```catkin_ws``` workspace
+
+```
+cd ~/catkin_ws/src
+git clone https://github.com/NeBula-Autonomy/localization_analyzer.git
+```
+
+# How to run
+## How to store data in order to run the scripts
 
 To run the scripts smoothly you should have the following folder structure for dataset that you are going to evaluate. Assuming the folder is called ```test_localization_analyzer_dataset```. In this folder you should have the following folders and files
 
@@ -56,10 +72,21 @@ rostopic hz <odometry_topic> -w3 >> /path/to/test_localization_analyzer_dataset/
 rosbag record -O /path/to/test_localization_analyzer_dataset/specific_method_run_number/odometry.bag <odometry_topic>
 ```
 
-# How to run?
+## Run script
 
-To run analyzer (see [run_analyzer.yaml](https://github.com/NeBula-Autonomy/localization_analyzer/blob/main/scripts/run_analyzer.yaml) for easy use)
+For easy run go to 
+```
+cd ~/catkin_ws/src/localization_analyzer/scripts/
+```
+setup variables in ```run_analyzer.py``` and run 
+```
+tmuxp load run_analyzer.py
+```
+(see [run_analyzer.yaml](https://github.com/NeBula-Autonomy/localization_analyzer/blob/main/scripts/run_analyzer.yaml) for easy use)
 
+**(Alternative)**
+
+If you prefer run python script from the command line directly:
 ```
 python $(rospack find localization_analyzer)/scripts/analyzer.py <data/path/to/your/folder> <robot_name> <robot_odometry_topic> <test_name>
 ```
@@ -87,8 +114,6 @@ python $(rospack find localization_analyzer)/scripts/analyzer.py <data/path/to/y
 ```pose_graph_loop_closure_analysis.py```
 
 ```run_analyzer.yaml``` - [tmux](https://tmuxp.git-pull.com/) script for the single robot analyzer
-
-
 
 ## utilities folder
 ```aggregate_odometries.py``` - script to aggregate user requested odometries along with ground truth odometry.
@@ -122,43 +147,3 @@ python $(rospack find localization_analyzer)/scripts/analyzer.py <data/path/to/y
 ```plot_odom_covariance.py```
 
 ```plot_volume_size_from_map_info.py```
-
-# Do we need that?
-
-
-```recover_fiducial_calibration_from_pose_graph.py```
-
-# Removed
-
-Things that I assumed we do not need:
-- utilities/adapt_initial_transforms.py
-- utilities/ape_from_aggregated_odometries_parser.bash
-- utilities/ape_from_aggregated_odometries.bash
-- utilities/change_base_data_to_different_robot.py
-- utilities/convert_base_data_to_another_robot.py
-- utilities/extract_first_message_from_bag.py
-- utilities/extract_last_msg_from_bag.py
-- utilities/h1_start_b2.sh
-- utilities/key_handling.py
-- utilities/loam_cpu_mem_aggregator.py
-- utilities/plot_ape_results.bash
-- utilities/plot_rpe_results.bash
-- utilities/renamer.py
-- utilities/rpe_from_aggregated_odometries.bash
-- utilities/shift_init_pose_base_data.py
-- utilities/tf_to_odometry.py
-- utilities/visualize_trajectories_from_aggregated_odometries.bash
-
-- tmuxp_configs/gt_generation/*
-- tmuxp_configs/old/*
-- tmuxp_configs/* 
-
-- scripts/benchmark_checklist.txt
-- scripts/collect_multi_robot_data.sh
-- scripts/run_benchmark.sh
-- scripts/run_localization_analysis_with_packets.yaml
-- scripts/run_localization_analysis.yaml
-
-- config/dataset_settings.yaml
-- config/base_replay.rviz
-- config/base_replay_filtered.rviz
