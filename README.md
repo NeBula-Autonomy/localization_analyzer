@@ -80,7 +80,7 @@ cd ~/catkin_ws/src/localization_analyzer/scripts/
 ```
 setup variables in ```run_analyzer.py``` and run 
 ```
-tmuxp load run_analyzer.py
+tmuxp load run_analyzer.yaml
 ```
 (see [run_analyzer.yaml](https://github.com/NeBula-Autonomy/localization_analyzer/blob/main/scripts/run_analyzer.yaml) for easy use)
 
