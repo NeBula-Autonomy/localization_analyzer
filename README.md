@@ -78,7 +78,7 @@ For easy run go to
 ```
 cd ~/catkin_ws/src/localization_analyzer/scripts/
 ```
-setup variables in ```run_analyzer.py``` and run 
+setup variables in ```run_analyzer.yaml``` and run 
 ```
 tmuxp load run_analyzer.yaml
 ```
